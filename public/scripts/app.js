@@ -9,134 +9,89 @@ console.log("App is running");
 
 // JSX - JavaScript XML
 
+var appRoot = document.getElementById('app');
+
 var app = {
     title: 'Indecision app',
     subtitle: 'This is some info',
-    options: ['One', ' Two']
+    options: []
 };
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        app.options.length > 0 ? 'Here are yout options' : 'No options'
-    ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            'Item one'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'Item two'
-        )
-    )
-);
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
 
-var user = {
-    name: 'Konstantin',
-    age: 28,
-    location: 'Brno'
-};
+    var option = e.target.elements.option.value;
 
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location: ',
-            location
-        );
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        renderOptionList();
     }
 };
 
-// var userName = 'Konstantin';
-// var userAge = 28;
-// var userLocation = 'Brno';
-
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        user.name ? user.name : 'No name'
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
-    ),
-    getLocation(user.location)
-);
-
-// Creating counter
-
-var count = 0;
-
-var addOne = function addOne() {
-    count++;
-    renderCounterApp();
-};
-var minusOne = function minusOne() {
-    count--;
-    renderCounterApp();
-};
-var reset = function reset() {
-    count = 0;
-    renderCounterApp();
+var resetAll = function resetAll() {
+    app.options = [];
+    renderOptionList();
 };
 
-var appRoot = document.getElementById('app');
-
-// ReactDOM.render(template, appRoot);
-// ReactDOM.render(templateTwo, appRoot);
-
-var renderCounterApp = function renderCounterApp() {
-    var templateThree = React.createElement(
+var renderOptionList = function renderOptionList() {
+    var template = React.createElement(
         'div',
         null,
         React.createElement(
             'h1',
             null,
-            'Count: ',
-            count
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'p',
+            null,
+            app.subtitle
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length > 0 ? 'Here are yout options' : 'No options'
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length
         ),
         React.createElement(
             'button',
-            { onClick: addOne },
-            '+1'
+            { onClick: resetAll },
+            'Remove All'
         ),
         React.createElement(
-            'button',
-            { onClick: minusOne },
-            '-1'
+            'ol',
+            null,
+            React.createElement(
+                'li',
+                null,
+                'Item one'
+            ),
+            React.createElement(
+                'li',
+                null,
+                'Item two'
+            )
         ),
         React.createElement(
-            'button',
-            { onClick: reset },
-            'Reset'
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add Option'
+            )
         )
     );
-
-    ReactDOM.render(templateThree, appRoot);
+    ReactDOM.render(template, appRoot);
 };
 
-renderCounterApp();
+renderOptionList();
+
+// ReactDOM.render(template, appRoot);
+// ReactDOM.render(templateTwo, appRoot);
