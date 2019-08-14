@@ -2,7 +2,7 @@ const appRoot = document.getElementById('app');
 
 const app = {
     title: 'Visibility Toggle',
-    information: 'Some information to show up',
+    information: 'Some information to show up or nope?',
     status: false
 }
 
