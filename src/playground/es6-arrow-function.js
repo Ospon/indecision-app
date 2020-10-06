@@ -1,24 +1,33 @@
-const square = function (x) {
+/* const square = function(x) {
     return x * x;
 };
 
 // const squareArrow = (x) => {
 //    return x * x;
-// };
+//};
 
 const squareArrow = (x) => x * x;
 
-console.log(square(8));
-console.log(squareArrow(8));
+console.log(squareArrow(4)); */
 
-const fullName = 'Radka Tesarova';
-const getFirstName = (fullName) => {
-    return fullName.split(' ')[0];
+/* const fullName = 'Radka Tesarova';
+let firstName;
+
+if (fullName) {
+    firstName = fullName.split(' ')[0];
+    console.log(firstName);
 }
 
-console.log(getFirstName(fullName));
+console.log(firstName); */
 
+/* const getFirstName = (fullName) => {
+    let firstName;
 
-const getFirstNameTwo = (fullName) => fullName.split(' ')[0];
+    fullName ? (firstName = fullName.split(' ')[0]) : undefined;
 
-console.log(getFirstNameTwo(fullName));
+    return firstName;
+} */
+
+const getFirstName = (fullName) => fullName ? fullName.split(' ')[0] : undefined;
+
+console.log(getFirstName('Radka Tesarova'));

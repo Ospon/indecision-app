@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/ospon/Education"
 		}
 	],
 	"settings": {
@@ -14,6 +17,7 @@
 		"emmet.includeLanguages": {
 			"javascript": "javascriptreact",
 			"vue-html": "html"
-		}
+		},
+		"liveServer.settings.multiRootWorkspaceName": "Education"
 	}
 }

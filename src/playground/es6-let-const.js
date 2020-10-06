@@ -8,6 +8,8 @@ var nameVar = 'Andrew';
 console.log('nameVar', nameVar);
 
 // Лет можно дать новое значение, но саму переменную переписать не получиться, выдаст ошибку.
+// let + reassign = true
+// let + redefine = flase
 
 let nameLet = 'Jen';
 nameLet = 'Anna'; 
