@@ -94,5 +94,20 @@ const appRender = () => {
     ReactDOM.render(template, appRoot);
 };
 
+const appRender = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            <button onClick={detailsToggle}>{app.status ? 'Hide details' : 'Show details'}</button>
+            {app.status && (
+                <div>
+                    <p>{app.information}</p>
+                </div>
+            )}
+        </div>
+    );  
+    ReactDOM.render(template, appRoot);
+};
+
 appRender();
  */
